@@ -2,7 +2,9 @@ use bevy::prelude::*;
 use std::path::Path;
 
 use super::image_loader;
-use crate::plugins::ui::sidebar_setup::sidebar::SIDEBAR_PAL_PATH;
+use crate::plugins::ui::sidebar_setup::{
+    enums::icon::SidebarBuildButton, sidebar::SIDEBAR_PAL_PATH,
+};
 
 pub fn spawn_side2(sidebar: &mut ChildSpawnerCommands, images: &mut Assets<Image>) {
     if let Some(handle) = image_loader::load_image(
@@ -26,6 +28,7 @@ pub fn spawn_side2(sidebar: &mut ChildSpawnerCommands, images: &mut Assets<Image
                     side2
                         .spawn((
                             Button,
+                            SidebarBuildButton::Gwepicon,
                             Node {
                                 width: Val::Px(60.0),
                                 height: Val::Px(48.0),
@@ -39,7 +42,7 @@ pub fn spawn_side2(sidebar: &mut ChildSpawnerCommands, images: &mut Assets<Image
                             if let Some(handle) = image_loader::load_image(
                                 images,
                                 Path::new("assets/shp/ui/icon/gwepicon.shp"),
-                                Path::new(SIDEBAR_PAL_PATH),
+                                Path::new("assets/shp/ui/icon/cameo.pal"),
                             ) {
                                 button.spawn((
                                     ImageNode::new(handle),
